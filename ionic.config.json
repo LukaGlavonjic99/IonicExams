@@ -1,0 +1,7 @@
+{
+  "name": "prvi-domaci",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
