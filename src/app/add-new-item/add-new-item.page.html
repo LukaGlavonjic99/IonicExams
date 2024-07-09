@@ -1,0 +1,41 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Add New Exam
+      <p><ion-icon name="close-circle-outline" (click)="dismiss()"></ion-icon></p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-textarea label="Exam" placeholder="Type exam name" [(ngModel)]="examName"></ion-textarea>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-select label="Difficulty" placeholder="Pick difficulty" [(ngModel)]="examDifficulty">
+          <ion-select-option value="easy">Easy</ion-select-option>
+          <ion-select-option value="hard">Hard</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime" [(ngModel)]="examDate"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-button expand="full" (click)="addExam()">Add exam</ion-button>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
