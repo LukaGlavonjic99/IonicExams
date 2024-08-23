@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      <h1>Today's date:</h1>
+      <p class="date">{{today | date:'fullDate'}}</p>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">Logout</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateTo('home')">First Year</ion-button>
+      <ion-button (click)="navigateTo('second-year')">Second Year</ion-button>
+      <ion-button (click)="navigateTo('third-year')">Third Year</ion-button>
+      <ion-button (click)="navigateTo('fourth-year')">Fourth Year</ion-button>
+      <ion-button (click)="navigateTo('passed-exams')">Passed Exams</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="searchExams($event)" placeholder="Search exams"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let exam of filteredExams">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{exam.name}}</ion-card-title>
+        <ion-item>
+          <ion-icon>{{exam.id}}</ion-icon>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{exam.date | date:'fullDate'}}</p>
+        <p>ESPB: {{exam.ESPB}}</p>
+        <ion-row>
+          <ion-button (click)="goToUpdatePage(exam)">Update</ion-button>
+          <ion-button (click)="deleteExam(exam)">Delete</ion-button>
+          <ion-button (click)="markAsPassed(exam)">Passed</ion-button>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="goToAddPage()">
+      <ion-icon name="add">Add</ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
