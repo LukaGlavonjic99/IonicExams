@@ -1,0 +1,19 @@
+.green-background {
+    background-color: lightgreen;
+    color: black; 
+  }
+  
+  .green-background ion-card-header,
+  .green-background ion-card-content,
+  .green-background ion-item,
+  .green-background ion-card-title,
+  .green-background ion-card-subtitle {
+    background-color: lightgreen;
+    color: black;
+  }
+  
+  .green-background ion-item::part(native) {
+    background-color: lightgreen;
+    color: black;
+  }
+  
